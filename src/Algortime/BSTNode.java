@@ -72,5 +72,17 @@ public class BSTNode {
 			return	right.max();
 		return this.number;		
 	}
+	
+	
+	public int count(int value)
+	{
+		if (left != null)
+			value += left.count(1);
+		if(right != null)
+		 value += right.count(1);
+		
+	return value;
+	
+	}
 
 }

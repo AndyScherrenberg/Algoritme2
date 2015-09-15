@@ -49,7 +49,7 @@ return root.max();
 	 * @return
 	 */
 	public int count() {
-		throw new UnsupportedOperationException("Not implemented, yet");
+return root.count(1);
 	}
 	
 	/**
@@ -91,7 +91,7 @@ return root.max();
 		tree.insert(1);
 		tree.insert(3);
 		tree.insert(9);
-	//	System.out.println("Count: " + tree.count()); // Should be 9
+		System.out.println("Count: " + tree.count()); // Should be 9
 		System.out.println("Min: " + tree.min()); // Should be 2
 		System.out.println("Max: " + tree.max()); // Should be 94
 //		System.out.println("Depth: " + tree.depth()); // Should be 7
