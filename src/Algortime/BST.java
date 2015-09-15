@@ -88,13 +88,21 @@ return root.count(1);
 		tree.insert(71);
 		tree.insert(30);
 		tree.insert(49);
-		tree.insert(1);
-		tree.insert(3);
-		tree.insert(9);
+
 		System.out.println("Count: " + tree.count()); // Should be 9
 		System.out.println("Min: " + tree.min()); // Should be 2
 		System.out.println("Max: " + tree.max()); // Should be 94
-//		System.out.println("Depth: " + tree.depth()); // Should be 7
+		System.out.println("Bestaat 50? " + tree.exists(50));
+		System.out.println("Bestaat 2? " + tree.exists(2));
+		System.out.println("Bestaat 7? " + tree.exists(7));
+		System.out.println("Bestaat 94? " + tree.exists(94));
+		System.out.println("Bestaat 24? " + tree.exists(24));
+		System.out.println("Bestaat 71? " + tree.exists(71));
+		System.out.println("Bestaat 30? " + tree.exists(30));
+		System.out.println("Bestaat 49? " + tree.exists(49));
+		System.out.println("Bestaat 756? " + tree.exists(756));
+		System.out.println("Bestaat 69? " + tree.exists(69));
+	//	System.out.println("Depth: " + tree.depth()); // Should be 7
 	//	tree.print(); // Prints the values in order
 		
   //      tree.delete(49); // test for value not in tree

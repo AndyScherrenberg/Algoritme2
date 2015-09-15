@@ -34,10 +34,22 @@ public class BSTNode {
 	
 	public boolean exists(int number)
 	{
-	Boolean b =	this.left.exists(number);
+
+		boolean b  = false;
+		if (number == this.number)
+			return  true;
 	
+		if (left != null)
+			b = left.exists(number);
 	
-	return b;
+		if(b)
+			return b;
+		
+		if(right != null)
+			b =	right.exists(number);
+
+		return b;
+	
 	}
 	
 	public void Traverse()
