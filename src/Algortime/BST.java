@@ -25,14 +25,14 @@ public class BST {
 	 * Returns the smallest value in the tree (or -1 if tree is empty)
 	 */
 	public int min() {
-		throw new UnsupportedOperationException("Not implemented, yet");
+	return	root.min();
 	}
 	
 	/**
 	 * Returns the largest value in the tree (or -1 if tree is empty)
 	 */
 	public int max() {
-		throw new UnsupportedOperationException("Not implemented, yet");
+return root.max();
 	}
 	
 	/**
@@ -88,11 +88,14 @@ public class BST {
 		tree.insert(71);
 		tree.insert(30);
 		tree.insert(49);
+		tree.insert(1);
+		tree.insert(3);
+		tree.insert(9);
 	//	System.out.println("Count: " + tree.count()); // Should be 9
-	//	System.out.println("Min: " + tree.min()); // Should be 2
-//		System.out.println("Max: " + tree.max()); // Should be 94
+		System.out.println("Min: " + tree.min()); // Should be 2
+		System.out.println("Max: " + tree.max()); // Should be 94
 //		System.out.println("Depth: " + tree.depth()); // Should be 7
-		tree.print(); // Prints the values in order
+	//	tree.print(); // Prints the values in order
 		
   //      tree.delete(49); // test for value not in tree
     //    tree.delete(51); // test for value not in tree

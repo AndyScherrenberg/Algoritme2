@@ -43,10 +43,34 @@ public class BSTNode {
 	public void Traverse()
 	{
 		if (left != null)
-		left.Traverse();
+			left.Traverse();
 		System.out.println(this.number);
 		if (right != null)
-		right.Traverse();
+			right.Traverse();
+	}
+	
+	public int min()
+	{
+		int temp1 = (left != null)? left.number : 0;
+		int temp2 = (right != null) ? right.number : 0;
+		
+		if (this.number >= temp1 && temp1 != 0)
+			return left.min();
+		else if(this.number >= temp2 && temp2 != 0)
+			return	right.min();
+		return this.number;
+	}
+	
+	public int max()
+	{
+		int temp1 = (left != null)? left.number : 0;
+		int temp2 = (right != null) ? right.number : 0;
+		
+		if (this.number <= temp1 && temp1 != 0)
+			return left.max();
+		else if(this.number <= temp2 && temp2 != 0)
+			return	right.max();
+		return this.number;		
 	}
 
 }
