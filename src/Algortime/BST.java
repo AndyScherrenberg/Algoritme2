@@ -25,6 +25,9 @@ public class BST {
 	 * Returns the smallest value in the tree (or -1 if tree is empty)
 	 */
 	public int min() {
+		if (root == null)
+		{ return -1;}
+		else
 		return root.min();
 	}
 
@@ -32,6 +35,9 @@ public class BST {
 	 * Returns the largest value in the tree (or -1 if tree is empty)
 	 */
 	public int max() {
+		if (root == null)
+		{ return -1;}
+		else
 		return root.max();
 	}
 
@@ -44,7 +50,7 @@ public class BST {
 	public int depth() {
 		if (root == null)
 			return 0;
-		return root.dept();
+		return root.dept()-2;
 	}
 
 	/**
@@ -151,21 +157,21 @@ public class BST {
 		//tree.printInRange(1, 3);
 		// tree.print(); // Prints the values in order
 
-		// tree.delete(49); // test for value not in tree
+		 tree.delete(49); // test for value not in tree
 		// tree.delete(51); // test for value not in tree
-		// tree.delete(50);
-		// tree.delete(2);
-		// tree.delete(7);
-		// tree.delete(94);
-		// tree.delete(24);
-		// tree.delete(24);
-		// tree.delete(71);
-		// tree.delete(30);
+		 tree.delete(50);
+		 tree.delete(2);
+		 tree.delete(7);
+		 tree.delete(94);
+		 tree.delete(24);
+		 tree.delete(24);
+		 tree.delete(71);
+		 tree.delete(30);
 
-		// System.out.println("Count: " + tree.count()); // Should be 0
-		// System.out.println("Min: " + tree.min()); // Should be -1
-		// System.out.println("Max: " + tree.max()); // Should be -1
-		// System.out.println("Depth: " + tree.depth()); // Should be 0
-		// tree.print(); // Prints the values in order
+		 System.out.println("Count: " + tree.count()); // Should be 0
+		 System.out.println("Min: " + tree.min()); // Should be -1
+		 System.out.println("Max: " + tree.max()); // Should be -1
+		System.out.println("Depth: " + tree.depth()); // Should be 0
+		 tree.print(); // Prints the values in order
 	}
 }
