@@ -1,4 +1,5 @@
-package Algortime;
+package week3op2;
+
 
 public class Number extends Expression{
 	private int number;

@@ -1,4 +1,5 @@
-package Algortime;
+package week3op2;
+
 
 public class Operand extends Expression {
 	char operand;
