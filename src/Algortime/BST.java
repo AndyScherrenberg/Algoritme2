@@ -50,7 +50,7 @@ public class BST {
 	public int depth() {
 		if (root == null)
 			return 0;
-		return root.dept()-2;
+		return root.depth( 1);
 	}
 
 	/**

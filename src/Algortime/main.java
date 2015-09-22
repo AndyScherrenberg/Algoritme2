@@ -5,8 +5,8 @@ public class main {
 //		// TODO Auto-generated method stub
 //		System.out.println("hello Algoritme");
 //
-//		BST bst = new BST();
-//		bst.main(null);
+		BST bst = new BST();
+		bst.main(null);
 //		// System.out.println("hello Algoritme	" + bst.count());
 		
 		Number vier = new Number(4);

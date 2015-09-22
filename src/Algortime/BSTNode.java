@@ -106,10 +106,31 @@ public class BSTNode {
 		return value;
 
 	}
+	public int depth(int d){
 
-	public int dept() {
-		return 1 + (left == null ? 0 : left.dept())
-				+ (right == null ? 0 : right.dept());
+		int leftDepth = d, rightDepth = d;
+	     
+	    if(left != null){
+	        leftDepth = left.depth( d+1);
+	    }
+	    if(right != null){
+	        rightDepth = right.depth( d+1);
+	    }
+	     
+	    return leftDepth > rightDepth ? leftDepth : rightDepth;
+	    
+	    
+		
+		//return 1 
+	//			+ (left == null ? 0 : left.dept())
+//				+ (right == null ? 0 : right.dept());
+	/*
+		if (left == null) return 0;
+		if (right == null)return 0;
+	if (left.number >= right.number)
+		return 1 + (left == null ? 0 :	left.dept());
+		else
+			return 1 + (right == null ? 0 : right.dept());*/
 	}
 
 	public int minValue() {
