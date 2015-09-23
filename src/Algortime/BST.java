@@ -41,6 +41,15 @@ public class BST {
 		return root.max();
 	}
 
+	
+
+	public void prettyprint() {
+		if(root != null) {
+			root.prettyprint("→", " ");
+		}
+	}
+	
+	
 	/**
 	 * Returns how many levels deep the deepest level in the tree is (the empty
 	 * tree is 0 levels deep, the tree with only one root node is 1 deep)
@@ -98,7 +107,35 @@ public class BST {
 		}
 
 	}
+	
+	 private void rotateRight(){
 
+         BSTNode oldRoot = root;
+         if (root.left != null)
+         oldRoot.left = root.left;
+         if (root.right != null)
+         root = root.right;
+         if (root.left != null)
+          oldRoot.right = root.left; 
+         
+         root.left = oldRoot;
+}
+	 
+	 
+	 private void rotateLeft(){
+
+         BSTNode oldRoot = root;
+         if (root.right != null)
+         oldRoot.right = root.right;
+         if (root.left != null)
+         root = root.left;
+         if (root.right != null)
+          oldRoot.left = root.right; 
+         
+        root.right = oldRoot;
+}
+	 
+	 
 	private BSTNode delete(BSTNode p, int toDelete) {
 		if (p == null)
 			throw new RuntimeException("cannot delete.");
@@ -139,7 +176,13 @@ public class BST {
 		tree.insert(71);
 		tree.insert(30);
 		tree.insert(49);
+tree.prettyprint();
 
+tree. rotateRight();
+tree. rotateLeft();
+
+tree.prettyprint();
+/*
 		System.out.println("Count: " + tree.count()); // Should be 9
 		System.out.println("Min: " + tree.min()); // Should be 2
 		System.out.println("Max: " + tree.max()); // Should be 94
@@ -172,6 +215,6 @@ public class BST {
 		 System.out.println("Min: " + tree.min()); // Should be -1
 		 System.out.println("Max: " + tree.max()); // Should be -1
 		System.out.println("Depth: " + tree.depth()); // Should be 0
-		 tree.print(); // Prints the values in order
+		 tree.print(); // Prints the values in order*/
 	}
 }

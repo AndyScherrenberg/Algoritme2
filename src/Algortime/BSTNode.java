@@ -5,7 +5,7 @@ public class BSTNode {
 
 	public BSTNode left;
 	public BSTNode right;
-
+	public BSTNode parent; 
 	public BSTNode(int number) {
 		this.number = number;
 	}
@@ -32,6 +32,8 @@ public class BSTNode {
 				this.right.insert(number);
 			}
 		}
+		
+		this.parent = this;
 	}
 
 	public boolean exists(int number) {
@@ -74,6 +76,7 @@ public class BSTNode {
 			right.Traverse(min,max);
 		}
 	}
+	
 
 	public int min() {
 		int temp1 = (left != null) ? left.number : 0;
@@ -118,20 +121,39 @@ public class BSTNode {
 	    }
 	     
 	    return leftDepth > rightDepth ? leftDepth : rightDepth;
-	    
-	    
-		
-		//return 1 
-	//			+ (left == null ? 0 : left.dept())
-//				+ (right == null ? 0 : right.dept());
-	/*
-		if (left == null) return 0;
-		if (right == null)return 0;
-	if (left.number >= right.number)
-		return 1 + (left == null ? 0 :	left.dept());
-		else
-			return 1 + (right == null ? 0 : right.dept());*/
 	}
+	
+	
+	public BSTNode rotateRight()
+	{    BSTNode root = this;
+		  BSTNode oldRoot = this;     // Save the current root (1)
+		  if (right != null) {    // Can this ever happen? (*)
+		    root = right;         // Setting the new root  (2)
+		  }
+		  oldRoot.right = left; // Assign the left sub tree to the previous root right tree (3)
+		  left = oldRoot;   
+
+		  
+		  return root;
+	}
+
+	public void prettyprint(String firstPrefix, String prefix) {
+		System.out.println(firstPrefix + number);
+
+		if (right == null) {
+			System.out.println(prefix + "├── .");
+		} else {
+			right.prettyprint(prefix + "├── ", prefix + "|   ");
+		}
+
+		if (left == null) {
+			System.out.println(prefix + "└── .");
+		} else {
+			left.prettyprint(prefix + "└── ", prefix + "    ");
+		}
+	}
+	
+	
 
 	public int minValue() {
 		if (left == null)
