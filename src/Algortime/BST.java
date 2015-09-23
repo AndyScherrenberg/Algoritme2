@@ -110,29 +110,14 @@ public class BST {
 	
 	 private void rotateRight(){
 
-         BSTNode oldRoot = root;
-         if (root.left != null)
-         oldRoot.left = root.left;
-         if (root.right != null)
-         root = root.right;
-         if (root.left != null)
-          oldRoot.right = root.left; 
-         
-         root.left = oldRoot;
+		 root = root. rotateRight(root);
 }
 	 
 	 
 	 private void rotateLeft(){
+		 
+		 root = root.rotateLeft(root);
 
-         BSTNode oldRoot = root;
-         if (root.right != null)
-         oldRoot.right = root.right;
-         if (root.left != null)
-         root = root.left;
-         if (root.right != null)
-          oldRoot.left = root.right; 
-         
-        root.right = oldRoot;
 }
 	 
 	 

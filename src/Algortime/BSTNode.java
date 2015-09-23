@@ -123,18 +123,36 @@ public class BSTNode {
 	    return leftDepth > rightDepth ? leftDepth : rightDepth;
 	}
 	
-	
-	public BSTNode rotateRight()
-	{    BSTNode root = this;
-		  BSTNode oldRoot = this;     // Save the current root (1)
-		  if (right != null) {    // Can this ever happen? (*)
-		    root = right;         // Setting the new root  (2)
-		  }
-		  oldRoot.right = left; // Assign the left sub tree to the previous root right tree (3)
-		  left = oldRoot;   
+	public BSTNode rotateRight(BSTNode root)
+	{   
+   
+    BSTNode oldRoot = root;
+    if (root.left != null)
+    oldRoot.left = root.left;
+    if (root.right != null)
+    root = root.right;
+    if (root.left != null)
+     oldRoot.right = root.left; 
+    
+    root.left = oldRoot;
+    
+    return root;}
 
-		  
-		  return root;
+	
+	public BSTNode rotateLeft(BSTNode root)
+	{   
+		
+		BSTNode oldRoot = root;
+    if (root.right != null)
+    oldRoot.right = root.right;
+    if (root.left != null)
+    root = root.left;
+    if (root.right != null)
+     oldRoot.left = root.right; 
+    
+   root.right = oldRoot;
+   
+   return root;
 	}
 
 	public void prettyprint(String firstPrefix, String prefix) {
