@@ -1,7 +1,67 @@
 package Algortime;
 
 public class BST {
+
 	private BSTNode root;
+
+	public BST() {
+
+		this.insert(50);
+		this.insert(2);
+		this.insert(7);
+		this.insert(94);
+		this.insert(24);
+		this.insert(24);
+		this.insert(71);
+		this.insert(30);
+		this.insert(49);
+		System.out.println(this.isAVLGebalanceerd());
+		// ROTATE TEST 
+		// this.prettyprint();
+		//
+		// this.rotateRight();
+		// this.rotateLeft();
+		//
+		// this.prettyprint();
+
+		/*
+		 * System.out.println("Count: " + tree.count()); // Should be 9
+		 * System.out.println("Min: " + tree.min()); // Should be 2
+		 * System.out.println("Max: " + tree.max()); // Should be 94
+		 * System.out.println("Bestaat 50? " + tree.exists(50));
+		 * System.out.println("Bestaat 2? " + tree.exists(2));
+		 * System.out.println("Bestaat 7? " + tree.exists(7));
+		 * System.out.println("Bestaat 94? " + tree.exists(94));
+		 * System.out.println("Bestaat 24? " + tree.exists(24));
+		 * System.out.println("Bestaat 71? " + tree.exists(71));
+		 * System.out.println("Bestaat 30? " + tree.exists(30));
+		 * System.out.println("Bestaat 49? " + tree.exists(49));
+		 * System.out.println("Bestaat 756? " + tree.exists(756));
+		 * System.out.println("Bestaat 69? " + tree.exists(69));
+		 * System.out.println("Depth: " + tree.depth()); // Should be 7
+		 * //tree.printInRange(1, 3); // tree.print(); // Prints the values in
+		 * order
+		 * 
+		 * tree.delete(49); // test for value not in tree // tree.delete(51); //
+		 * test for value not in tree tree.delete(50); tree.delete(2);
+		 * tree.delete(7); tree.delete(94); tree.delete(24); tree.delete(24);
+		 * tree.delete(71); tree.delete(30);
+		 * 
+		 * System.out.println("Count: " + tree.count()); // Should be 0
+		 * System.out.println("Min: " + tree.min()); // Should be -1
+		 * System.out.println("Max: " + tree.max()); // Should be -1
+		 * System.out.println("Depth: " + tree.depth()); // Should be 0
+		 * tree.print(); // Prints the values in order
+		 */
+	}
+
+	public boolean isAVLGebalanceerd() {
+		if(root != null)
+			return root.isAVLGebalanceerd();
+		else
+			return false;
+		
+	}
 
 	/**
 	 * Inserts the value into the binary search tree
@@ -25,31 +85,28 @@ public class BST {
 	 * Returns the smallest value in the tree (or -1 if tree is empty)
 	 */
 	public int min() {
-		if (root == null)
-		{ return -1;}
-		else
-		return root.min();
+		if (root == null) {
+			return -1;
+		} else
+			return root.min();
 	}
 
 	/**
 	 * Returns the largest value in the tree (or -1 if tree is empty)
 	 */
 	public int max() {
-		if (root == null)
-		{ return -1;}
-		else
-		return root.max();
+		if (root == null) {
+			return -1;
+		} else
+			return root.max();
 	}
 
-	
-
 	public void prettyprint() {
-		if(root != null) {
+		if (root != null) {
 			root.prettyprint("→", " ");
 		}
 	}
-	
-	
+
 	/**
 	 * Returns how many levels deep the deepest level in the tree is (the empty
 	 * tree is 0 levels deep, the tree with only one root node is 1 deep)
@@ -59,7 +116,7 @@ public class BST {
 	public int depth() {
 		if (root == null)
 			return 0;
-		return root.depth( 1);
+		return root.depth(1);
 	}
 
 	/**
@@ -107,20 +164,18 @@ public class BST {
 		}
 
 	}
-	
-	 private void rotateRight(){
 
-		 root = root. rotateRight(root);
-}
-	 
-	 
-	 private void rotateLeft(){
-		 
-		 root = root.rotateLeft(root);
+	private void rotateRight() {
 
-}
-	 
-	 
+		root = root.rotateRight(root);
+	}
+
+	private void rotateLeft() {
+
+		root = root.rotateLeft(root);
+
+	}
+
 	private BSTNode delete(BSTNode p, int toDelete) {
 		if (p == null)
 			throw new RuntimeException("cannot delete.");
@@ -148,58 +203,5 @@ public class BST {
 			p = p.right;
 
 		return p.number;
-	}
-
-	public static void main(String args[]) {
-		BST tree = new BST();
-		tree.insert(50);
-		tree.insert(2);
-		tree.insert(7);
-		tree.insert(94);
-		tree.insert(24);
-		tree.insert(24);
-		tree.insert(71);
-		tree.insert(30);
-		tree.insert(49);
-tree.prettyprint();
-
-tree. rotateRight();
-tree. rotateLeft();
-
-tree.prettyprint();
-/*
-		System.out.println("Count: " + tree.count()); // Should be 9
-		System.out.println("Min: " + tree.min()); // Should be 2
-		System.out.println("Max: " + tree.max()); // Should be 94
-		System.out.println("Bestaat 50? " + tree.exists(50));
-		System.out.println("Bestaat 2? " + tree.exists(2));
-		System.out.println("Bestaat 7? " + tree.exists(7));
-		System.out.println("Bestaat 94? " + tree.exists(94));
-		System.out.println("Bestaat 24? " + tree.exists(24));
-		System.out.println("Bestaat 71? " + tree.exists(71));
-		System.out.println("Bestaat 30? " + tree.exists(30));
-		System.out.println("Bestaat 49? " + tree.exists(49));
-		System.out.println("Bestaat 756? " + tree.exists(756));
-		System.out.println("Bestaat 69? " + tree.exists(69));
-		System.out.println("Depth: " + tree.depth()); // Should be 7
-		//tree.printInRange(1, 3);
-		// tree.print(); // Prints the values in order
-
-		 tree.delete(49); // test for value not in tree
-		// tree.delete(51); // test for value not in tree
-		 tree.delete(50);
-		 tree.delete(2);
-		 tree.delete(7);
-		 tree.delete(94);
-		 tree.delete(24);
-		 tree.delete(24);
-		 tree.delete(71);
-		 tree.delete(30);
-
-		 System.out.println("Count: " + tree.count()); // Should be 0
-		 System.out.println("Min: " + tree.min()); // Should be -1
-		 System.out.println("Max: " + tree.max()); // Should be -1
-		System.out.println("Depth: " + tree.depth()); // Should be 0
-		 tree.print(); // Prints the values in order*/
 	}
 }

@@ -5,14 +5,36 @@ public class BSTNode {
 
 	public BSTNode left;
 	public BSTNode right;
-	public BSTNode parent; 
+	public BSTNode parent;
+
 	public BSTNode(int number) {
 		this.number = number;
 	}
 
-	public int getNumber(){
+	public int getNumber() {
 		return number;
 	}
+	
+	public boolean isAVLGebalanceerd() {
+		int rightDepth = 0;
+		int leftDepth = 0;
+		
+		if(right != null)
+			rightDepth = right.depth(1);
+		if(left != null)
+			leftDepth = left.depth(1);
+		
+		int i =  Math.abs(rightDepth- leftDepth);
+		
+		if(i > 1)
+			return false;
+		else
+			if(right.isAVLGebalanceerd() && left.isAVLGebalanceerd())
+				return true;
+			else
+				return false;
+	}
+
 	/**
 	 * Add a number in the subtree of this node
 	 */
@@ -32,7 +54,7 @@ public class BSTNode {
 				this.right.insert(number);
 			}
 		}
-		
+
 		this.parent = this;
 	}
 
@@ -62,21 +84,18 @@ public class BSTNode {
 		if (right != null)
 			right.Traverse();
 	}
-	
+
 	public void Traverse(int min, int max) {
-		if (left != null){
-			left.Traverse(min,max);
+		if (left != null) {
+			left.Traverse(min, max);
 		}
-		if(this.number >= min && this.number <= max )
-		{
+		if (this.number >= min && this.number <= max) {
 			System.out.println(this.number);
 		}
-		if (right != null)
-		{
-			right.Traverse(min,max);
+		if (right != null) {
+			right.Traverse(min, max);
 		}
 	}
-	
 
 	public int min() {
 		int temp1 = (left != null) ? left.number : 0;
@@ -109,50 +128,52 @@ public class BSTNode {
 		return value;
 
 	}
-	public int depth(int d){
+
+	public int depth(int d) {
 
 		int leftDepth = d, rightDepth = d;
-	     
-	    if(left != null){
-	        leftDepth = left.depth( d+1);
-	    }
-	    if(right != null){
-	        rightDepth = right.depth( d+1);
-	    }
-	     
-	    return leftDepth > rightDepth ? leftDepth : rightDepth;
-	}
-	
-	public BSTNode rotateRight(BSTNode root)
-	{   
-   
-    BSTNode oldRoot = root;
-    if (root.left != null)
-    oldRoot.left = root.left;
-    if (root.right != null)
-    root = root.right;
-    if (root.left != null)
-     oldRoot.right = root.left; 
-    
-    root.left = oldRoot;
-    
-    return root;}
 
-	
-	public BSTNode rotateLeft(BSTNode root)
-	{   
-		
-		BSTNode oldRoot = root;
-    if (root.right != null)
-    oldRoot.right = root.right;
-    if (root.left != null)
-    root = root.left;
-    if (root.right != null)
-     oldRoot.left = root.right; 
-    
-   root.right = oldRoot;
-   
-   return root;
+		if (left != null) {
+			leftDepth = left.depth(d + 1);
+		}
+		if (right != null) {
+			rightDepth = right.depth(d + 1);
+		}
+
+		return leftDepth > rightDepth ? leftDepth : rightDepth;
+	}
+
+	public BSTNode rotateLeft(BSTNode root) {
+		if (this.right == null) {
+			return null;
+		} else {
+			BSTNode oldRoot = root;
+
+			if (root.right != null)
+				root = root.right;
+			if (root.left != null)
+				oldRoot.right = root.left;
+
+			root.left = oldRoot;
+
+			return root;
+		}
+	}
+
+	public BSTNode rotateRight(BSTNode root) {
+		if (this.left == null) {
+			return null;
+		} else {
+			BSTNode oldRoot = root;
+			if (root.left != null)
+				root = root.left;
+			if (root.right != null)
+				oldRoot.left = root.right;
+
+			root.right = oldRoot;
+
+			return root;
+		}
 	}
 
 	public void prettyprint(String firstPrefix, String prefix) {
@@ -170,8 +191,6 @@ public class BSTNode {
 			left.prettyprint(prefix + "└── ", prefix + "    ");
 		}
 	}
-	
-	
 
 	public int minValue() {
 		if (left == null)
