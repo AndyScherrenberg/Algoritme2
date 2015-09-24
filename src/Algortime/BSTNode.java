@@ -123,9 +123,10 @@ public class BSTNode {
 	    return leftDepth > rightDepth ? leftDepth : rightDepth;
 	}
 	
-	public BSTNode rotateRight(BSTNode root)
+	public BSTNode rotateRight()
 	{   
-   
+		BSTNode root = this;
+		
     BSTNode oldRoot = root;
     if (root.left != null)
     oldRoot.left = root.left;
@@ -139,9 +140,9 @@ public class BSTNode {
     return root;}
 
 	
-	public BSTNode rotateLeft(BSTNode root)
+	public BSTNode rotateLeft()
 	{   
-		
+		BSTNode root = this;
 		BSTNode oldRoot = root;
     if (root.right != null)
     oldRoot.right = root.right;
