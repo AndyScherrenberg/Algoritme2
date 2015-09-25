@@ -2,7 +2,6 @@ package Algortime;
 
 public class BSTNode {
 	public int number;
-
 	public BSTNode left;
 	public BSTNode right;
 	public BSTNode parent;
@@ -14,25 +13,35 @@ public class BSTNode {
 	public int getNumber() {
 		return number;
 	}
-	
+
 	public boolean isAVLGebalanceerd() {
 		int rightDepth = 0;
 		int leftDepth = 0;
-		
-		if(right != null)
+		boolean rightIsBalanced = false;
+		boolean leftIsBalanced = false;
+
+		if (right != null) {
 			rightDepth = right.depth(1);
-		if(left != null)
+			rightIsBalanced = right.isAVLGebalanceerd();
+		}
+		if (left != null) {
 			leftDepth = left.depth(1);
+			leftIsBalanced = left.isAVLGebalanceerd();
+		}
+
+		int i = Math.abs(rightDepth - leftDepth);
 		
-		int i =  Math.abs(rightDepth- leftDepth);
-		
-		if(i > 1)
+		if(right == null && left == null)
+		{
+			return true;
+		}
+
+		if (i > 1)
 			return false;
+		else if (rightIsBalanced && leftIsBalanced || rightIsBalanced && left == null || leftIsBalanced && right == null)
+			return true;
 		else
-			if(right.isAVLGebalanceerd() && left.isAVLGebalanceerd())
-				return true;
-			else
-				return false;
+			return false;
 	}
 
 	/**
@@ -54,8 +63,29 @@ public class BSTNode {
 				this.right.insert(number);
 			}
 		}
+	}
 
-		this.parent = this;
+	public BSTNode insertAVLNode(int number) {
+
+		if (number < this.number) {
+			// Smaller value, insert it into the left subtree
+			if (this.left == null) {
+				BSTNode node = new BSTNode(number);
+				this.left = node;
+				return node;
+			} else {
+				return this.left.insertAVLNode(number);
+			}
+		} else {
+			// Larger value, insert it in the right subtree
+			if (this.right == null) {
+				BSTNode node = new BSTNode(number);
+				this.right = node;
+				return node;
+			} else {
+				return this.right.insertAVLNode(number);
+			}
+		}
 	}
 
 	public boolean exists(int number) {
@@ -203,4 +233,10 @@ public class BSTNode {
 		return 0;
 	}
 
+	public BSTNode insertAVL(int insertNumber) {
+		BSTNode newNode = insertAVLNode(insertNumber);
+		if (newNode == null)
+			throw new RuntimeException("geen AVL insert gemaakt");
+		return newNode;
+	}
 }

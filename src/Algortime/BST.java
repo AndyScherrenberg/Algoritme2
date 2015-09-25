@@ -15,8 +15,10 @@ public class BST {
 		this.insert(71);
 		this.insert(30);
 		this.insert(49);
-		System.out.println(this.isAVLGebalanceerd());
-		// ROTATE TEST 
+		this.insertAVL(5);
+		prettyprint();
+
+		// ROTATE TEST
 		// this.prettyprint();
 		//
 		// this.rotateRight();
@@ -56,11 +58,14 @@ public class BST {
 	}
 
 	public boolean isAVLGebalanceerd() {
-		if(root != null)
+		if (root != null)
 			return root.isAVLGebalanceerd();
 		else
 			return false;
-		
+	}
+
+	public void insertAVL(int number) {
+		System.out.println(root.insertAVL(number).number);
 	}
 
 	/**
