@@ -30,15 +30,15 @@ public class BSTNode {
 		}
 
 		int i = Math.abs(rightDepth - leftDepth);
-		
-		if(right == null && left == null)
-		{
+
+		if (right == null && left == null) {
 			return true;
 		}
 
 		if (i > 1)
 			return false;
-		else if (rightIsBalanced && leftIsBalanced || rightIsBalanced && left == null || leftIsBalanced && right == null)
+		else if (rightIsBalanced && leftIsBalanced || rightIsBalanced
+				&& left == null || leftIsBalanced && right == null)
 			return true;
 		else
 			return false;
@@ -173,37 +173,35 @@ public class BSTNode {
 		return leftDepth > rightDepth ? leftDepth : rightDepth;
 	}
 
-	public BSTNode rotateLeft(BSTNode root) {
-		if (this.right == null) {
-			return null;
-		} else {
-			BSTNode oldRoot = root;
+	public BSTNode rotateRight() {
+		BSTNode root = this;
 
-			if (root.right != null)
-				root = root.right;
-			if (root.left != null)
-				oldRoot.right = root.left;
+		BSTNode oldRoot = root;
+		if (root.left != null)
+			oldRoot.left = root.left;
+		if (root.right != null)
+			root = root.right;
+		if (root.left != null)
+			oldRoot.right = root.left;
 
-			root.left = oldRoot;
+		root.left = oldRoot;
 
-			return root;
-		}
+		return root;
 	}
 
-	public BSTNode rotateRight(BSTNode root) {
-		if (this.left == null) {
-			return null;
-		} else {
-			BSTNode oldRoot = root;
-			if (root.left != null)
-				root = root.left;
-			if (root.right != null)
-				oldRoot.left = root.right;
+	public BSTNode rotateLeft() {
+		BSTNode root = this;
+		BSTNode oldRoot = root;
+		if (root.right != null)
+			oldRoot.right = root.right;
+		if (root.left != null)
+			root = root.left;
+		if (root.right != null)
+			oldRoot.left = root.right;
 
-			root.right = oldRoot;
+		root.right = oldRoot;
 
-			return root;
-		}
+		return root;
 	}
 
 	public void prettyprint(String firstPrefix, String prefix) {
