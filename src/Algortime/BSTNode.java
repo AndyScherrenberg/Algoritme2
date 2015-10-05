@@ -175,10 +175,8 @@ public class BSTNode {
 
 	public BSTNode rotateRight() {
 		BSTNode root = this;
-
 		BSTNode oldRoot = root;
-		if (root.left != null)
-			oldRoot.left = root.left;
+
 		if (root.right != null)
 			root = root.right;
 		if (root.left != null)
@@ -192,8 +190,7 @@ public class BSTNode {
 	public BSTNode rotateLeft() {
 		BSTNode root = this;
 		BSTNode oldRoot = root;
-		if (root.right != null)
-			oldRoot.right = root.right;
+
 		if (root.left != null)
 			root = root.left;
 		if (root.right != null)
