@@ -115,15 +115,15 @@ public class BSTNode {
 		int rightDepth = 0;
 		
 		if(this.right != null)
-			rightDepth = right.depth(0);
+			rightDepth = right.depth(1);
 		if(this.left != null)
-			leftDepth = left.depth(0);
+			leftDepth = left.depth(1);
 		
 		int i = Math.abs(leftDepth - rightDepth);
 		if(i > 1)
 		{
 			//iemand is te zwaar
-			if(right.depth(0) > left.depth(0)){
+			if(rightDepth > leftDepth){
 				//Rechts te zwaar || 2Methods
 				
 				int rightRight = 0;
@@ -155,9 +155,9 @@ public class BSTNode {
 				int leftLeft = 0;
 				
 				if(this.left.right != null)
-					leftRight = this.left.right.depth(0);
+					leftRight = this.left.right.depth(1);
 				if(this.left.left != null)
-					leftLeft = this.left.left.depth(0);
+					leftLeft = this.left.left.depth(1);
 				if(leftLeft >= leftRight){
 					// het linkerkind is links groter of gelijk aan rechts
 					return rotateRight();
@@ -275,7 +275,8 @@ public class BSTNode {
 	public BSTNode rotateLeft() {
 		BSTNode root = this;
 		BSTNode oldRoot = root;
-
+		if (root.right != null)
+			oldRoot.right = root.right;
 		if (root.left != null)
 			root = root.left;
 		if (root.right != null)

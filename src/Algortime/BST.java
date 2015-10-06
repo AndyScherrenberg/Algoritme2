@@ -15,6 +15,7 @@ public class BST {
 //		this.insert(71);
 //		this.insert(30);
 //		this.insert(49);
+		prettyprint();
 		this.insertAVL(5);
 		prettyprint();
 		System.out.println("Balanced: " +isAVLGebalanceerd());
