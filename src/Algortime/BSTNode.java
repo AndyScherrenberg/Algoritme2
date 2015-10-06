@@ -70,22 +70,107 @@ public class BSTNode {
 		if (number < this.number) {
 			// Smaller value, insert it into the left subtree
 			if (this.left == null) {
+				//Add new node
 				BSTNode node = new BSTNode(number);
 				this.left = node;
-				return node;
+				// check if balanced
+				if(this.right != null)
+				{
+					int i = Math.abs(right.depth(0) - left.depth(0));
+					if(i > 1)
+					{
+						System.out.println("hoe ken da nou!");
+					}
+				}
+				return this;
 			} else {
-				return this.left.insertAVLNode(number);
+				// Going deeper to add new Node
+				this.left = this.left.insertAVLNode(number);
+				return balanceTree();
 			}
 		} else {
 			// Larger value, insert it in the right subtree
 			if (this.right == null) {
 				BSTNode node = new BSTNode(number);
 				this.right = node;
-				return node;
+				// check if balanced
+				if(this.left != null)
+				{
+					int i = Math.abs(right.depth(0) - left.depth(0));
+					if(i > 1)
+					{
+						System.out.println("hoe ken da nou!");
+					}
+				}
+				return this;
 			} else {
-				return this.right.insertAVLNode(number);
+				this.right = this.right.insertAVLNode(number);
+				return balanceTree();
 			}
 		}
+	}
+
+	private BSTNode balanceTree() {
+		int leftDepth = 0;
+		int rightDepth = 0;
+		
+		if(this.right != null)
+			rightDepth = right.depth(0);
+		if(this.left != null)
+			leftDepth = left.depth(0);
+		
+		int i = Math.abs(leftDepth - rightDepth);
+		if(i > 1)
+		{
+			//iemand is te zwaar
+			if(right.depth(0) > left.depth(0)){
+				//Rechts te zwaar || 2Methods
+				
+				int rightRight = 0;
+				int rightLeft = 0;
+				
+				if(this.right.right != null)
+					rightRight = this.right.right.depth(0);
+				if(this.right.left != null)
+					rightLeft = this.right.left.depth(0);
+				if(rightRight >= rightLeft)
+				{
+					// het rechterkind is rechts zwaarder
+					return rotateLeft();
+					
+				}
+				else
+				{
+					// het rechterkind is links zwaarder
+					this.right = right.rotateRight();
+					return rotateLeft(); // TODO misschien naar links
+				}
+				
+			}
+			else
+			{
+				//Links te zwaar
+				
+				int leftRight = 0;
+				int leftLeft = 0;
+				
+				if(this.left.right != null)
+					leftRight = this.left.right.depth(0);
+				if(this.left.left != null)
+					leftLeft = this.left.left.depth(0);
+				if(leftLeft >= leftRight){
+					// het linkerkind is links groter of gelijk aan rechts
+					return rotateRight();
+				}
+				else
+				{
+					// het linkerkind is rechts groter
+					this.left = left.rotateLeft();
+					return rotateRight();
+				}
+			}
+		}
+		return this;
 	}
 
 	public boolean exists(int number) {
@@ -226,12 +311,5 @@ public class BSTNode {
 
 	public int printInRange(int min, int max) {
 		return 0;
-	}
-
-	public BSTNode insertAVL(int insertNumber) {
-		BSTNode newNode = insertAVLNode(insertNumber);
-		if (newNode == null)
-			throw new RuntimeException("geen AVL insert gemaakt");
-		return newNode;
 	}
 }
