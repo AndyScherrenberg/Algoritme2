@@ -8,15 +8,17 @@ public class BST {
 
 		this.insertAVL(50);
 		this.insertAVL(2);
-//		this.insert(7);
-//		this.insert(94);
-//		this.insert(24);
-//		this.insert(24);
-//		this.insert(71);
-//		this.insert(30);
-//		this.insert(49);
-		prettyprint();
+		//this.insertAVL(7);
+		//this.insertAVL(94);
+		//this.insertAVL(24);
+		//this.insertAVL(24);
+		//this.insertAVL(71);
+	//	this.insertAVL(30);
+	//	this.insertAVL(49);
+	//	prettyprint();
 		this.insertAVL(5);
+		
+		
 		prettyprint();
 		System.out.println("Balanced: " +isAVLGebalanceerd());
 

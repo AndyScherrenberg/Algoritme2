@@ -70,15 +70,13 @@ public class BSTNode {
 		if (number < this.number) {
 			// Smaller value, insert it into the left subtree
 			if (this.left == null) {
-				//Add new node
+				// Add new node
 				BSTNode node = new BSTNode(number);
 				this.left = node;
 				// check if balanced
-				if(this.right != null)
-				{
+				if (this.right != null) {
 					int i = Math.abs(right.depth(0) - left.depth(0));
-					if(i > 1)
-					{
+					if (i > 1) {
 						System.out.println("hoe ken da nou!");
 					}
 				}
@@ -94,11 +92,9 @@ public class BSTNode {
 				BSTNode node = new BSTNode(number);
 				this.right = node;
 				// check if balanced
-				if(this.left != null)
-				{
+				if (this.left != null) {
 					int i = Math.abs(right.depth(0) - left.depth(0));
-					if(i > 1)
-					{
+					if (i > 1) {
 						System.out.println("hoe ken da nou!");
 					}
 				}
@@ -113,57 +109,49 @@ public class BSTNode {
 	private BSTNode balanceTree() {
 		int leftDepth = 0;
 		int rightDepth = 0;
-		
-		if(this.right != null)
+
+		if (this.right != null)
 			rightDepth = right.depth(1);
-		if(this.left != null)
+		if (this.left != null)
 			leftDepth = left.depth(1);
-		
+
 		int i = Math.abs(leftDepth - rightDepth);
-		if(i > 1)
-		{
-			//iemand is te zwaar
-			if(rightDepth > leftDepth){
-				//Rechts te zwaar || 2Methods
-				
+		if (i > 1) {
+			// iemand is te zwaar
+			if (rightDepth > leftDepth) {
+				// Rechts te zwaar || 2Methods
+
 				int rightRight = 0;
 				int rightLeft = 0;
-				
-				if(this.right.right != null)
+
+				if (this.right.right != null)
 					rightRight = this.right.right.depth(0);
-				if(this.right.left != null)
+				if (this.right.left != null)
 					rightLeft = this.right.left.depth(0);
-				if(rightRight >= rightLeft)
-				{
+				if (rightRight >= rightLeft) {
 					// het rechterkind is rechts zwaarder
 					return rotateLeft();
-					
-				}
-				else
-				{
+
+				} else {
 					// het rechterkind is links zwaarder
 					this.right = right.rotateRight();
 					return rotateLeft(); // TODO misschien naar links
 				}
-				
-			}
-			else
-			{
-				//Links te zwaar
-				
+
+			} else {
+				// Links te zwaar
+
 				int leftRight = 0;
 				int leftLeft = 0;
-				
-				if(this.left.right != null)
+
+				if (this.left.right != null)
 					leftRight = this.left.right.depth(1);
-				if(this.left.left != null)
+				if (this.left.left != null)
 					leftLeft = this.left.left.depth(1);
-				if(leftLeft >= leftRight){
+				if (leftLeft >= leftRight) {
 					// het linkerkind is links groter of gelijk aan rechts
 					return rotateRight();
-				}
-				else
-				{
+				} else {
 					// het linkerkind is rechts groter
 					this.left = left.rotateLeft();
 					return rotateRight();
@@ -259,32 +247,24 @@ public class BSTNode {
 	}
 
 	public BSTNode rotateRight() {
+
 		BSTNode root = this;
-		BSTNode oldRoot = root;
+		BSTNode temp = root.left;
+		root.left = temp.right;
+		temp.right = root;
 
-		if (root.right != null)
-			root = root.right;
-		if (root.left != null)
-			oldRoot.right = root.left;
-
-		root.left = oldRoot;
-
-		return root;
+		return temp;
 	}
 
 	public BSTNode rotateLeft() {
+
 		BSTNode root = this;
-		BSTNode oldRoot = root;
-		if (root.right != null)
-			oldRoot.right = root.right;
-		if (root.left != null)
-			root = root.left;
-		if (root.right != null)
-			oldRoot.left = root.right;
+		BSTNode temp = root.right;
+		root.right = temp.left;
+		temp.left = root;
 
-		root.right = oldRoot;
+		return temp;
 
-		return root;
 	}
 
 	public void prettyprint(String firstPrefix, String prefix) {
