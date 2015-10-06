@@ -15,11 +15,10 @@ public class BST {
 		//this.insertAVL(71);
 	//	this.insertAVL(30);
 	//	this.insertAVL(49);
-	//	prettyprint();
-		this.insertAVL(5);
-		
-		
 		prettyprint();
+		this.insertAVL(5);
+		prettyprint();
+		
 		System.out.println("Balanced: " +isAVLGebalanceerd());
 
 		// ROTATE TEST
@@ -72,7 +71,7 @@ public class BST {
 		if (root == null) {
 			root = new BSTNode(number);
 		} else {
-			root.insertAVLNode(number);
+			root = root.insertAVLNode(number);
 		}
 		return null;
 	}
